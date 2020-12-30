@@ -1,5 +1,10 @@
 import React, {useState, useEffect}from 'react';
+import Base from './Base';
 import {getProducts} from "./Helper/CoreApiCalls";
+import "../styles.css"
+import Card from './Card';
+
+
 export default function Home() {
     const [products,setProducts] = useState([]);
     const [error, setError] = useState(false);
@@ -21,18 +26,18 @@ export default function Home() {
     }, []);
 
     return (
-        <div>
+        <Base title="Home Page" description="Wellcome to the T-shirt store">
             <h1>Home Component</h1>
             <div className= "row">
                 {products.map((product, index)=>{
                     return (
-                        <div key = {index}>
-                        <h1>{product.name}</h1>
+                        <div key = {index} className ="col-4 mb-4">
+                        <Card product={product}/>
                         </div>
                     )
                 })}
             </div>
             
-        </div>
+        </Base>
     )
 }
