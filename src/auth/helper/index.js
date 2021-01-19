@@ -21,14 +21,20 @@ export const signin = (user) => {
     const formData = new FormData();
 
     for(const name in user){
+        console.log(user[name]);
         formData.append(name, user[name]);
     }
 
-    return fetch(`${API}user/login`,{
+    for (var key of formData.keys()){
+        console.log("MYKEY: ", key);
+    }
+
+    return fetch(`${API}user/login/`,{
         method:"POST",
-        body: FormData
+        body: formData,
     })
-    .then(response=>{
+    .then((response)=>{
+        console.log("SUCCESS", response)
         return response.json();
     })
     .catch(err => console.log(err))
@@ -58,7 +64,7 @@ export const signout = next => {
     if(typeof window !== undefined){
         localStorage.removeItem("jwt")
         cartEmpty(()=>{});
-        // next();
+        next();
 
         return fetch(`${API}user/logout/${userId}`,{
             method: "GET",
