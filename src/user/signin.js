@@ -104,7 +104,7 @@ const Signin = () => {
               <form>
                
                 <div className="form-group">
-                  <label className="text-light">Email</label>
+                  <label className="text-dark">Email</label>
                   <input
                     className="form-control"
                     value={email}
@@ -113,7 +113,7 @@ const Signin = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label className="text-light">password</label>
+                  <label className="text-dark">password</label>
                   <input
                     className="form-control"
                     value={password}

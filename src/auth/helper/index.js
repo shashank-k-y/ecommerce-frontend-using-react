@@ -1,7 +1,7 @@
 import {API} from "../../backend"
 import {cartEmpty} from "../../core/Helper/CartHelper"
 
-export const signup = user => {
+export const signup = (user) => {
     return fetch(`${API}user/`,{
         method: "POST",
         header: {
@@ -58,13 +58,15 @@ export const isAuthenticated = () => {
     }
 };
 
-export const signout = next => {
+export const signout =( next) => {
     const userId = isAuthenticated() && isAuthenticated().user.id
+
+    console.log("USERID: ", userId);
 
     if(typeof window !== undefined){
         localStorage.removeItem("jwt")
         cartEmpty(()=>{});
-        next();
+        // next();
 
         return fetch(`${API}user/logout/${userId}`,{
             method: "GET",
@@ -73,5 +75,6 @@ export const signout = next => {
             console.log("Signout success");
             next();
         })
+            .catch((err) => console.log(err));
     }
 }

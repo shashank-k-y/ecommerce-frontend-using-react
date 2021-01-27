@@ -7,3 +7,11 @@ export const getProducts = () =>{
     })
     .catch((err) => console.log(err));
 };
+
+export const getCategory = () => {
+    return fetch(`${API}category`, { method: "GET" })
+        .then((response) => {
+            return response.json();
+        })
+        .catch((err) => console.log(err));
+};

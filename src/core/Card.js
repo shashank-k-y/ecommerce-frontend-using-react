@@ -16,20 +16,29 @@ const Card = ({
 }) => {
 
     const [redirect, setRedirect] = useState(false)
+    const [sredirect, setSredirect] = useState(false)
 
         const cartTitle = product ? product.name : "A photo from pexel"
         const cartDescription = product ? product.description : "A good quality tshirt"
         const cartPrice = product ? product.price : "default"
 
 
+        const getSredirect = (sredirect) => {
+            if (sredirect) {
+                return <Redirect to="/signin" />;
+             }
+        };
         const addToCart = () => {
             if (isAuthenticated()){
                 addItemToCart(product, ()=> setRedirect(true));
                 console.log("Added to cart");
             } else {
                 console.log("login please!");
+                setSredirect(true)
             }
         };
+
+   
 
         const getAredirect = (redirect) => {
             if (redirect) {
@@ -39,10 +48,10 @@ const Card = ({
 
         const showAddToCart = (addToCart) =>{
             return(
-                addToCart && (
+                addtoCart && (
                 <button
                     onClick={addToCart}
-                    className="btn btn-block btn-outline-success mt-2 mb-2"
+                    className="btn btn-block btn-outline-primary mt-2 mb-2"
                 >
                     Add to Cart
                 </button>
@@ -70,15 +79,17 @@ const Card = ({
         }
 
     return (
-      <div className="card text-white bg-dark border border-info ">
-        <div className="card-header lead">{cartTitle}</div>
+        
+        <div className="card  text-dark bg-light">
+            <div className="card-header  lead"><h4>{cartTitle}</h4></div>
         <div className="card-body">
         {getAredirect(redirect)}
+                {getSredirect(sredirect)}
             <ImageHelper product={product}/>
-          <p className="lead bg-success font-weight-normal text-wrap">
-            {cartDescription}
+          <p className="lead font-weight-normal text-wrap">
+                    <strong>{cartDescription}</strong>
           </p>
-          <p className="btn btn-success rounded  btn-sm px-4">$ {cartPrice}</p>
+                <p className="lead"><strong>Price : $ {cartPrice}</strong></p>
           <div className="row">
             <div className="col-12">
               {showAddToCart(addToCart)}

@@ -1,43 +1,45 @@
-import React, {useState, useEffect}from 'react';
-import Base from './Base';
-import {getProducts} from "./Helper/CoreApiCalls";
-import "../styles.css"
-import Card from './Card';
+import React, { useState, useEffect } from "react";
+import { getProducts } from "./Helper/CoreApiCalls";
+import Base from "./Base";
+
+import "../styles.css";
+import Card from "./Card";
 
 
-export default function Home() {
-    const [products,setProducts] = useState([]);
+export default function Home () {
+    const [products, setProducts] = useState([]);
     const [error, setError] = useState(false);
 
-    const loadAllProducts = () =>{
+    const loadAllProducts = () => {
         getProducts()
-        .then((data)=>{
-            if (data.error){
-                setError(data.error);
-                console.log(error);
-            }
-            else {
-                setProducts(data);
-            }
-        });
+            .then((data) => {
+                if (data.error) {
+                    setError(data.error);
+                    console.log(error);
+                } else {
+                    setProducts(data);
+                }
+            });
     };
-    useEffect(()=>{
+
+    useEffect(() => {
         loadAllProducts();
     }, []);
 
     return (
-        <Base title="Home Page" description="Wellcome to the T-shirt store">
-            <h1>Home Component</h1>
-            <div className= "row">
-                {products.map((product, index)=>{
+        <Base title="Home Page" description="Welcome to Tshirt store">
+    
+            
+            <div className="row ">
+                <h1>Home component</h1>
+                {products.map((product, index) => {
                     return (
-                        <div key = {index} className ="col-4 mb-4">
-                        <Card product={product}/>
+                        <div key={index} className="col-md-3 col-lg-3 col-sm-12 mb-4">
+                            <Card product={product} />
                         </div>
-                    )
+                    );
                 })}
             </div>
-            
         </Base>
-    )
+    );
 }

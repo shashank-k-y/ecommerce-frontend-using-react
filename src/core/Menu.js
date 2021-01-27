@@ -12,16 +12,16 @@ const currentTab = (history, path) => {
 
  const Menu = ({history, path}) => {
     return (
-        <div>
-            <ul className = "nav nav-tabs bg-dark">
+        <div className="container-flex ">
+            <ul className= "nav nav-tabs bg-dark justify-content-centre">
                 <li className="nav-item">
                     <Link style={currentTab(history, "/")}
-                     className="nav-link" to = "/">HOME</Link>
+                        className="nav-link" to="/">HOME   <i class="fa fa-home " aria-hidden="true"></i></Link>
                 </li>
                 {isAuthenticated()&&(
                     <li className="nav-item">
                         <Link style={currentTab(history, "/cart")}
-                            className="nav-link" to="/cart">Cart</Link>
+                            className="nav-link" to="/cart">Cart<i class="fa fa-shopping-cart" aria-hidden="true"></i></Link>
                     </li>
                 )}
                 { isAuthenticated() && (
@@ -34,11 +34,11 @@ const currentTab = (history, path) => {
                    <Fragment>
                         <li className="nav-item">
                             <Link style={currentTab(history, "/signup")}
-                                className="nav-link" to="/signup">Signup</Link>
+                                className="nav-link" to="/signup">Signup <i class="fa fa-user-plus" aria-hidden="true"></i></Link>
                         </li>
                         <li className="nav-item">
                             <Link style={currentTab(history, "/signin")}
-                                className="nav-link" to="/signin">Signin</Link>
+                                className="nav-link" to="/signin">Signin <i class="fa fa-sign-in" aria-hidden="true"></i></Link>
                         </li>
                    </Fragment>
                )}
@@ -50,7 +50,7 @@ const currentTab = (history, path) => {
                                     history.push("/")
                                 })
                             }}
-                            className="nav-link text-warning">Signout
+                            className="nav-link text-white">Signout <i class="fa fa-sign-out" aria-hidden="true"></i>
                    </span>
                     </li>
                 )}

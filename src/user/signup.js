@@ -85,7 +85,7 @@ const Signup = () => {
         <div className="col-md-6 offset-sm-3 text-left">
           <form>
             <div className="form-group">
-              <label className="text-light">Name</label>
+              <label className="text-dark">Name</label>
               <input
                 className="form-control"
                 value={name}
@@ -94,7 +94,7 @@ const Signup = () => {
               />
             </div>
             <div className="form-group">
-              <label className="text-light">Email</label>
+              <label className="text-dark">Email</label>
               <input
                 className="form-control"
                 value={email}
@@ -103,7 +103,7 @@ const Signup = () => {
               />
             </div>
             <div className="form-group">
-              <label className="text-light">password</label>
+              <label className="text-dark">password</label>
               <input
                 className="form-control"
                 value={password}
